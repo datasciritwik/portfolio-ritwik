@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Grid Pattern Animation */
+.bg-grid-pattern {
+  background-size: 50px 50px;
+  background-image: linear-gradient(to right, rgba(0,0,0,0.1) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(0,0,0,0.1) 1px, transparent 1px);
+}
+
+@keyframes grid {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+  100% {
+    transform: translateX(-50px) translateY(-50px);
+  }
+}
+
+.animate-grid {
+  animation: grid 20s linear infinite;
+}
+
+/* Typing Animation */
+.typing-container {
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.typing-animation {
+  display: inline-block;
+  overflow: hidden;
+  border-right: 2px solid transparent;
+  white-space: pre-wrap;
+  animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from { max-width: 0 }
+  to { max-width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: currentColor }
+}
+
+/* Fade In Animation */
+.animate-fade-in {
+  animation: fadeIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Dark mode transitions */
+.dark {
+  @apply transition-colors duration-300;
+}
