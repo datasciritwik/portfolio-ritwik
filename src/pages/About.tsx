@@ -13,7 +13,7 @@ function About() {
             unique perspective to every project.
           </p>
           <a 
-            href="https://drive.google.com/file/d/1I-zjlUeEguYNGCApmI1uOUP5jEzr1tHf/view?usp=drive_link"
+            href="https://drive.google.com/file/d/1NQobhSTnftOqtYdDbs0qPHuDRq4iHIo7/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center px-6 py-3 bg-gray-800 dark:bg-gray-700 text-white rounded-full hover:bg-gray-900 dark:hover:bg-gray-600 transition"
