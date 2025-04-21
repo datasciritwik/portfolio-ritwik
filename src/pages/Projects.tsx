@@ -8,7 +8,7 @@ const projects = [
     description: 'ML model predicting customer churn with 95% accuracy',
     tech: ['Python', 'Scikit-learn', 'TensorFlow'],
     image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800',
-    github: '#',
+    github: 'https://sites.google.com/view/ritwik-profile/projects?authuser=0',
     outcome: '95% prediction accuracy'
   },
   {
@@ -17,7 +17,7 @@ const projects = [
     description: 'Interactive dashboard for real-time sales monitoring',
     tech: ['Power BI', 'SQL', 'Python'],
     image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800',
-    github: '#',
+    github: 'https://sites.google.com/view/ritwik-profile/projects?authuser=0',
     outcome: 'Increased sales insights by 40%'
   },
   {
@@ -26,7 +26,7 @@ const projects = [
     description: 'Scalable system design using microservices',
     tech: ['Docker', 'AWS', 'Node.js'],
     image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=800',
-    github: '#',
+    github: 'https://sites.google.com/view/ritwik-profile/projects?authuser=0',
     outcome: '30% improved system performance'
   }
 ];
