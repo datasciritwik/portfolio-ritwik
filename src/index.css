@@ -60,3 +60,169 @@
 .dark {
   @apply transition-colors duration-300;
 }
+
+/* Button & Card Hover Effects */
+.button-animated, .card-animated {
+  transition: transform 0.2s cubic-bezier(0.4,0,0.2,1), box-shadow 0.2s cubic-bezier(0.4,0,0.2,1);
+}
+.button-animated:hover, .card-animated:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 8px 32px 0 rgba(56, 189, 248, 0.15);
+}
+
+/* Section Fade-in Animation */
+.section-fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: sectionFadeIn 0.8s forwards;
+}
+@keyframes sectionFadeIn {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Floating Label for Forms */
+.floating-label {
+  position: relative;
+}
+.floating-label input, .floating-label textarea {
+  padding-top: 1.25rem;
+}
+.floating-label label {
+  position: absolute;
+  left: 1rem;
+  top: 1.1rem;
+  color: #64748b;
+  pointer-events: none;
+  transition: all 0.2s;
+  font-size: 1rem;
+}
+.floating-label input:focus + label,
+.floating-label input:not(:placeholder-shown) + label,
+.floating-label textarea:focus + label,
+.floating-label textarea:not(:placeholder-shown) + label {
+  top: 0.2rem;
+  left: 0.75rem;
+  font-size: 0.85rem;
+  color: #2563eb;
+}
+
+/* Back to Top Button */
+#backToTopBtn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 50;
+  background: linear-gradient(90deg, #2563eb 0%, #7c3aed 100%);
+  color: white;
+  border-radius: 9999px;
+  padding: 0.75rem 1.25rem;
+  box-shadow: 0 4px 24px 0 rgba(59,130,246,0.15);
+  opacity: 0.85;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.2s;
+  display: none;
+}
+#backToTopBtn.show {
+  display: block;
+  opacity: 1;
+}
+#backToTopBtn:hover {
+  opacity: 1;
+  transform: translateY(-4px) scale(1.05);
+}
+
+/* Footer Social Icons */
+.footer-social {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+.footer-social a {
+  color: #64748b;
+  transition: color 0.2s;
+  font-size: 1.5rem;
+}
+.footer-social a:hover {
+  color: #2563eb;
+}
+
+/* Neon Glow and Animated Effects */
+@keyframes glow {
+  0%, 100% { filter: drop-shadow(0 0 16px #f0abfc) drop-shadow(0 0 32px #38bdf8); }
+  50% { filter: drop-shadow(0 0 32px #f0abfc) drop-shadow(0 0 64px #38bdf8); }
+}
+.animate-glow { animation: glow 2.5s infinite alternate; }
+.drop-shadow-neon { filter: drop-shadow(0 0 8px #f0abfc) drop-shadow(0 0 16px #38bdf8); }
+
+@keyframes gradient-move {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+.animate-gradient-move { background-size: 200% 200%; animation: gradient-move 10s linear infinite; }
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
+}
+.animate-pulse-slow { animation: pulse-slow 4s infinite; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+.animate-float { animation: float 5s ease-in-out infinite; }
+@keyframes float-reverse {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(20px); }
+}
+.animate-float-reverse { animation: float-reverse 5s ease-in-out infinite; }
+
+@keyframes orbit-1 {
+  0% { transform: rotate(0deg) translateY(-110px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateY(-110px) rotate(-360deg); }
+}
+.animate-orbit-1 { animation: orbit-1 8s linear infinite; }
+@keyframes orbit-2 {
+  0% { transform: rotate(0deg) translateX(110px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(110px) rotate(-360deg); }
+}
+.animate-orbit-2 { animation: orbit-2 8s linear infinite; }
+@keyframes orbit-3 {
+  0% { transform: rotate(0deg) translateY(110px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateY(110px) rotate(-360deg); }
+}
+.animate-orbit-3 { animation: orbit-3 8s linear infinite; }
+@keyframes orbit-4 {
+  0% { transform: rotate(0deg) translateX(-110px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(-110px) rotate(-360deg); }
+}
+.animate-orbit-4 { animation: orbit-4 8s linear infinite; }
+
+/* 3D Carousel Card Effect */
+.carousel-3d { perspective: 1200px; }
+.carousel-card { transition: transform 0.5s cubic-bezier(0.4,0,0.2,1), box-shadow 0.5s; }
+
+/* Typewriter Effect */
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}
+.animate-typewriter {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 4px solid #f0abfc;
+  width: 0;
+  animation: typewriter 2.5s steps(30, end) 1s 1 normal both;
+}
+
+/* Glow Pulse for CTA */
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 32px 8px #f0abfc44, 0 0 64px 16px #38bdf844; opacity: 0.7; }
+  50% { box-shadow: 0 0 64px 16px #f0abfc88, 0 0 128px 32px #38bdf888; opacity: 1; }
+}
+.animate-glow-pulse { animation: glow-pulse 2.5s infinite alternate; }

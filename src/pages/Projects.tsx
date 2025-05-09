@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Github, ExternalLink } from 'lucide-react';
 
 const projects = [
@@ -39,7 +39,7 @@ function Projects() {
     : projects.filter(p => p.category === activeTab);
 
   return (
-    <section className="py-20 px-6">
+    <section className="py-20 px-6 section-fade-in">
       <div className="container mx-auto">
         <h2 className="text-3xl font-bold mb-12 text-center">Projects</h2>
         
@@ -90,11 +90,11 @@ function Projects() {
         {/* Project Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredProjects.map((project, index) => (
-            <div key={index} className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
+            <div key={index} className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden card-animated transition-all">
               <img 
                 src={project.image} 
                 alt={project.title}
-                className="w-full h-48 object-cover"
+                className="w-full h-48 object-cover transition-transform duration-300 hover:scale-105"
               />
               <div className="p-6">
                 <h3 className="text-xl font-bold mb-2">{project.title}</h3>
@@ -132,7 +132,7 @@ function Projects() {
             href="https://sites.google.com/view/ritwik-profile/projects?authuser=0"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center px-8 py-4 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-all duration-300 shadow-lg hover:shadow-blue-500/25"
+            className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full hover:scale-105 button-animated shadow-lg hover:shadow-blue-500/25"
           >
             View More Projects
             <ExternalLink className="ml-2 w-5 h-5" />

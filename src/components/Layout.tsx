@@ -1,9 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Outlet, NavLink } from 'react-router-dom';
-import { Moon, Sun, Menu, X } from 'lucide-react';
+import { Moon, Sun, Menu, X, Github, Linkedin, Mail, ArrowUp } from 'lucide-react';
 
 function Layout() {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(() => {
+    // Default to dark mode
+    if (typeof window !== 'undefined') {
+      const stored = localStorage.getItem('theme');
+      if (stored) return stored === 'dark';
+    }
+    return true;
+  });
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -11,10 +18,32 @@ function Layout() {
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
+      const btn = document.getElementById('backToTopBtn');
+      if (btn) {
+        if (window.scrollY > 300) {
+          btn.classList.add('show');
+        } else {
+          btn.classList.remove('show');
+        }
+      }
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    }
+  }, [darkMode]);
+
+  const handleBackToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
     <div className={`min-h-screen ${darkMode ? 'dark bg-gray-900 text-white' : 'bg-white'}`}>
@@ -174,11 +203,20 @@ function Layout() {
       {/* Main Content */}
       <main className="pt-20">
         <Outlet />
+        {/* Back to Top Button */}
+        <button id="backToTopBtn" onClick={handleBackToTop} aria-label="Back to top">
+          <ArrowUp className="inline w-5 h-5 mr-1" /> Top
+        </button>
       </main>
 
       {/* Footer */}
       <footer className="py-8 px-6 text-center text-gray-600 dark:text-gray-400">
         <p>© {new Date().getFullYear()} Portfolio. All rights reserved.</p>
+        <div className="footer-social">
+          <a href="mailto:officialritwik098@gmail.com" aria-label="Email"><Mail /></a>
+          <a href="https://www.linkedin.com/in/ritwik-singh-22b5a01b8" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><Linkedin /></a>
+          <a href="https://github.com/datasciritwik" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><Github /></a>
+        </div>
       </footer>
     </div>
   );

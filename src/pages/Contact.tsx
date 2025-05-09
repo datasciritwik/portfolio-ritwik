@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Mail, Linkedin, Github } from 'lucide-react';
 
 function Contact() {
   return (
-    <section className="py-20 px-6 bg-gray-50 dark:bg-gray-800">
+    <section className="py-20 px-6 section-fade-in">
       <div className="container mx-auto max-w-4xl">
         <h2 className="text-3xl font-bold mb-12 text-center">Get in Touch</h2>
         
@@ -26,41 +26,44 @@ function Contact() {
             </div>
           </div>
           
-          <form className="space-y-4">
-            <div>
-              <label className="block text-sm font-medium mb-1">Name</label>
-              <input
-                type="text"
-                className="w-full px-4 py-2 rounded-lg border dark:bg-gray-700 dark:border-gray-600"
-                placeholder="Your name"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium mb-1">Email</label>
-              <input
-                type="email"
-                className="w-full px-4 py-2 rounded-lg border dark:bg-gray-700 dark:border-gray-600"
-                placeholder="your@email.com"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium mb-1">Message</label>
-              <textarea
-                className="w-full px-4 py-2 rounded-lg border dark:bg-gray-700 dark:border-gray-600"
-                rows={4}
-                placeholder="Your message"
-              />
-            </div>
-            <button
-              type="submit"
-              className="w-full px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
-            >
-              Send Message
-            </button>
-          </form>
+          {/* Modern Contact Form with Floating Labels and Success Message */}
+          <ContactForm />
         </div>
       </div>
     </section>
+  );
+}
+
+function ContactForm() {
+  const [submitted, setSubmitted] = useState(false);
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmitted(true);
+    setTimeout(() => setSubmitted(false), 2500);
+  };
+  return submitted ? (
+    <div className="flex flex-col items-center justify-center h-full">
+      <div className="text-green-600 text-2xl font-bold mb-2">Thank you!</div>
+      <div className="text-gray-600 dark:text-gray-300">Your message has been sent.</div>
+    </div>
+  ) : (
+    <form className="space-y-6" onSubmit={handleSubmit} autoComplete="off">
+      <div className="floating-label">
+        <input type="text" name="name" required placeholder=" " className="w-full px-4 py-2 rounded-lg border dark:bg-gray-700 dark:border-gray-600" />
+        <label>Name</label>
+      </div>
+      <div className="floating-label">
+        <input type="email" name="email" required placeholder=" " className="w-full px-4 py-2 rounded-lg border dark:bg-gray-700 dark:border-gray-600" />
+        <label>Email</label>
+      </div>
+      <div className="floating-label">
+        <textarea name="message" required rows={4} placeholder=" " className="w-full px-4 py-2 rounded-lg border dark:bg-gray-700 dark:border-gray-600" />
+        <label>Message</label>
+      </div>
+      <button type="submit" className="w-full px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:scale-105 button-animated shadow-lg">
+        Send Message
+      </button>
+    </form>
   );
 }
 
