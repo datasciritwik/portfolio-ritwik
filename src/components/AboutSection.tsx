@@ -59,23 +59,26 @@ const AboutSection = () => {
           </p>
         </div>
 
-        {/* Attributes Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {attributes.map((attribute, index) => (
-            <div
-              key={index}
-              className="group relative p-6 bg-slate-800/50 backdrop-blur-sm rounded-xl border border-slate-700/50 hover:border-emerald-400/50 transition-all duration-300 transform hover:scale-105"
-            >
-              <div className={`inline-flex p-3 rounded-lg bg-gradient-to-r ${attribute.color} mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                {attribute.icon}
+        {/* Attributes Horizontal Scrollable Row */}
+        <div className="mb-16">
+          <div className="flex gap-6 overflow-x-auto pb-2 hide-scrollbar snap-x snap-mandatory">
+            {attributes.map((attribute, index) => (
+              <div
+                key={index}
+                className="min-w-[260px] max-w-xs flex-shrink-0 group relative p-6 bg-slate-800/60 backdrop-blur-md rounded-2xl border border-slate-700/50 hover:border-emerald-400/60 transition-all duration-300 transform hover:scale-105 snap-center shadow-lg"
+              >
+                <div className={`inline-flex p-3 rounded-lg bg-gradient-to-r ${attribute.color} mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                  {attribute.icon}
+                </div>
+                <h3 className="text-xl font-semibold text-white mb-2">{attribute.title}</h3>
+                <p className="text-gray-400 leading-relaxed">{attribute.description}</p>
+                {/* Hover Effect */}
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-emerald-400/10 to-blue-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
               </div>
-              <h3 className="text-xl font-semibold text-white mb-2">{attribute.title}</h3>
-              <p className="text-gray-400 leading-relaxed">{attribute.description}</p>
-              
-              {/* Hover Effect */}
-              <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-emerald-400/10 to-blue-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
-            </div>
-          ))}
+            ))}
+          </div>
+          {/* Optional: Scroll hint for mobile */}
+          <div className="mt-2 text-center text-xs text-gray-500 md:hidden">Swipe to see more</div>
         </div>
 
         {/* Personal Statement */}

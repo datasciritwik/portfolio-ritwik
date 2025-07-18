@@ -1,50 +1,14 @@
-import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter, MessageCircle } from 'lucide-react';
+import React from 'react';
+import { Mail, Github, Linkedin, Twitter, MessageCircle } from 'lucide-react';
 
 const ContactSection = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
-  });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle form submission
-    console.log('Form submitted:', formData);
+  const emailInfo = {
+    icon: <Mail className="w-7 h-7" />,
+    label: "Email",
+    value: "officialritwik098@gmail.com",
+    href: "mailto:officialritwik098@gmail.com",
+    color: "from-emerald-400 to-blue-400"
   };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  const contactInfo = [
-    {
-      icon: <Mail className="w-6 h-6" />,
-      label: "Email",
-      value: "officialritwik098@gmail.com",
-      href: "mailto:officialritwik098@gmail.com",
-      color: "from-emerald-400 to-blue-400"
-    },
-    {
-      icon: <Phone className="w-6 h-6" />,
-      label: "Phone",
-      value: "Available on request",
-      href: "#",
-      color: "from-blue-400 to-purple-400"
-    },
-    {
-      icon: <MapPin className="w-6 h-6" />,
-      label: "Location",
-      value: "India",
-      href: "#",
-      color: "from-purple-400 to-pink-400"
-    }
-  ];
 
   const socialLinks = [
     {
@@ -104,147 +68,39 @@ const ContactSection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Contact Form */}
-          <div className="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700/50">
-            <h3 className="text-2xl font-bold text-white mb-6 flex items-center">
-              <Send className="w-6 h-6 mr-3 text-emerald-400" />
-              Send a Message
-            </h3>
-            
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
-                    Your Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent transition-all duration-300"
-                    placeholder="John Doe"
-                    required
-                  />
-                </div>
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
-                    Email Address
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent transition-all duration-300"
-                    placeholder="john@example.com"
-                    required
-                  />
-                </div>
-              </div>
-              
-              <div>
-                <label htmlFor="subject" className="block text-sm font-medium text-gray-300 mb-2">
-                  Subject
-                </label>
-                <input
-                  type="text"
-                  id="subject"
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent transition-all duration-300"
-                  placeholder="Let's discuss a project"
-                  required
-                />
-              </div>
-              
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={5}
-                  value={formData.message}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent transition-all duration-300 resize-none"
-                  placeholder="Tell me about your project or how I can help..."
-                  required
-                />
-              </div>
-              
-              <button
-                type="submit"
-                className="w-full py-4 bg-gradient-to-r from-emerald-500 to-blue-500 text-white font-semibold rounded-lg hover:from-emerald-600 hover:to-blue-600 transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2"
-              >
-                <Send className="w-5 h-5" />
-                <span>Send Message</span>
-              </button>
-            </form>
-          </div>
-
-          {/* Contact Information */}
-          <div className="space-y-8">
-            {/* Contact Details */}
-            <div className="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700/50">
-              <h3 className="text-2xl font-bold text-white mb-6">Get in Touch</h3>
-              <div className="space-y-4">
-                {contactInfo.map((info, index) => (
-                  <a
-                    key={index}
-                    href={info.href}
-                    className="group flex items-center p-4 bg-slate-700/30 rounded-lg hover:bg-slate-700/50 transition-all duration-300 transform hover:scale-105"
-                  >
-                    <div className={`p-3 rounded-lg bg-gradient-to-r ${info.color} mr-4 group-hover:scale-110 transition-transform duration-300`}>
-                      {info.icon}
-                    </div>
-                    <div>
-                      <p className="text-sm text-gray-400">{info.label}</p>
-                      <p className="text-white font-semibold group-hover:text-emerald-400 transition-colors duration-300">
-                        {info.value}
-                      </p>
-                    </div>
-                  </a>
-                ))}
-              </div>
+        {/* Redesigned Contact Section */}
+        <div className="flex flex-col items-center gap-10">
+          {/* Email Card */}
+          <a
+            href={emailInfo.href}
+            className="group flex items-center gap-4 px-8 py-6 bg-slate-800/70 backdrop-blur-md rounded-2xl border border-slate-700/50 shadow-lg hover:border-emerald-400/60 hover:scale-105 transition-all duration-300 max-w-md w-full justify-center"
+          >
+            <div className={`p-3 rounded-lg bg-gradient-to-r ${emailInfo.color} group-hover:scale-110 transition-transform duration-300`}>
+              {emailInfo.icon}
             </div>
-
-            {/* Social Links */}
-            <div className="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700/50">
-              <h3 className="text-2xl font-bold text-white mb-6">Connect Online</h3>
-              <div className="grid grid-cols-2 gap-4">
-                {socialLinks.map((social, index) => (
-                  <a
-                    key={index}
-                    href={social.href}
-                    className={`flex items-center justify-center p-4 bg-slate-700/30 rounded-lg text-gray-400 ${social.color} transition-all duration-300 transform hover:scale-105 hover:bg-slate-700/50`}
-                  >
-                    {social.icon}
-                    <span className="ml-2 font-medium">{social.label}</span>
-                  </a>
-                ))}
-              </div>
-            </div>
-
-            {/* Call to Action */}
-            <div className="bg-gradient-to-r from-emerald-500/20 to-blue-500/20 backdrop-blur-sm rounded-2xl p-8 border border-emerald-400/30">
-              <h3 className="text-xl font-bold text-white mb-4">Ready to Start?</h3>
-              <p className="text-gray-300 mb-6">
-                Whether you need help with a specific project, want to discuss collaboration opportunities, or just want to chat about the latest in data science, I'm here to help.
+            <div className="text-left">
+              <p className="text-sm text-gray-400">{emailInfo.label}</p>
+              <p className="text-white font-semibold group-hover:text-emerald-400 transition-colors duration-300">
+                {emailInfo.value}
               </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <button className="flex-1 py-3 bg-emerald-500 text-white font-semibold rounded-lg hover:bg-emerald-600 transition-colors duration-300">
-                  Schedule a Call
-                </button>
-                <button className="flex-1 py-3 border-2 border-emerald-400 text-emerald-400 font-semibold rounded-lg hover:bg-emerald-400 hover:text-slate-900 transition-all duration-300">
-                  View Resume
-                </button>
-              </div>
+            </div>
+          </a>
+
+          {/* Social Links Card */}
+          <div className="bg-slate-800/70 backdrop-blur-md rounded-2xl p-8 border border-slate-700/50 shadow-lg w-full max-w-md text-center">
+            <h3 className="text-2xl font-bold text-white mb-6">Connect Online</h3>
+            <div className="flex flex-wrap justify-center gap-4">
+              {socialLinks.map((social, index) => (
+                <a
+                  key={index}
+                  href={social.href}
+                  className={`flex items-center gap-2 px-5 py-3 bg-slate-700/30 rounded-lg text-gray-400 ${social.color} transition-all duration-300 hover:scale-110 hover:bg-slate-700/50 font-medium`}
+                  target="_blank" rel="noopener noreferrer"
+                >
+                  {social.icon}
+                  <span>{social.label}</span>
+                </a>
+              ))}
             </div>
           </div>
         </div>

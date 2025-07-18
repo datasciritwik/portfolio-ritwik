@@ -204,9 +204,9 @@ const ExperienceSection = () => {
               <div className="w-16 h-16 bg-gradient-to-r from-purple-400 to-emerald-400 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Award className="w-8 h-8 text-white" />
               </div>
-              <h4 className="text-lg font-semibold text-white mb-2">B.Sc. Physics (Hons)</h4>
+              <h4 className="text-lg font-semibold text-white mb-2">B.Sc. Physics</h4>
               <p className="text-emerald-400 mb-2">University of North Bengal • 2018-2021</p>
-              <p className="text-gray-400 text-sm">Physics with Honors</p>
+              <p className="text-gray-400 text-sm">Physics Honors</p>
             </div>
           </div>
         </div>
