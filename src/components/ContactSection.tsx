@@ -20,7 +20,7 @@ const ContactSection = () => {
     {
       icon: <Linkedin className="w-6 h-6" />,
       label: "LinkedIn",
-      href: "https://www.linkedin.com/in/ritwik-singh-22b5a01b8",
+      href: "www.linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=ritwik-singh-22b5a01b8",
       color: "hover:text-blue-400"
     },
     {
